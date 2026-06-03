@@ -26,11 +26,11 @@ python test_mlx_tracker.py --preprocess_like_torch
 python test_transformers_tracker.py
 ```
 
-MLX result.
+MLX result on our Apple M1 device.
 
 ```bash
-# load_model: 1063.03 ms
-# feature_maps: 6445.35 ms
+# load_model: 1019.15 ms
+# feature_maps: 5849.87 ms
 # pred_masks
 (1, 1, 1, 288, 288)
 array([[[[[-13.5184, -12.7845, -12.2627, ..., -12.71, -11.5591, -11.3816],
@@ -46,34 +46,14 @@ array([[[0.618768]]], dtype=float32)
 # object_score_logits
 (1, 1, 1)
 array([[[21.2302]]], dtype=float32)
-# predict: 91.02 ms
-# pred_masks
-(1, 1, 1, 288, 288)
-array([[[[[-11.5506, -12.3197, -10.8077, ..., -12.62, -10.5808, -10.7619],
-          [-11.4273, -13.2322, -9.06491, ..., -12.3486, -10.8494, -10.6088],
-          [-12.8223, -14.724, -13.2716, ..., -14.075, -12.463, -13.823],
-          ...,
-          [-9.39367, -12.8007, -7.43116, ..., -9.76384, -4.50621, -7.5954],
-          [-9.95378, -12.4816, -11.9414, ..., -6.26456, -7.99747, -7.08613],
-          [-8.87647, -9.60523, -7.85607, ..., -6.44335, -5.21303, -6.35633]]]]], dtype=float32)
-# iou_scores
-(1, 1, 1)
-array([[[0.956187]]], dtype=float32)
-# object_score_logits
-(1, 1, 1)
-array([[[27.6314]]], dtype=float32)
-# predict: 24.70 ms
+# predict: 71.85 ms
 ```
 
-Transformers result.
+Transformers result on our Apple M1 device.
 
 ```bash
 # load_model: 2586.00 ms
 # processor: 58.41 ms
-/Users/ryo/Downloads/sam3-mlx/test_transformers_tracker.py:22: DeprecationWarning: __array__ implementation doesn't accept a copy keyword, so passing copy=False failed. __array__ must implement 'dtype' and 'copy' keyword arguments. To learn more, see the migration guide https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword
-  pred_mask = np.array(pred_mask)
-/Users/ryo/Downloads/sam3-mlx/test_transformers_tracker.py:29: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
-  object_score_logit = 1.0 / (1.0 + np.exp(-object_score_logit))
 # pred_masks
 torch.Size([1, 1, 1, 288, 288])
 tensor([[[[[-13.5184, -12.7845, -12.2627,  ..., -12.7099, -11.5591,
@@ -96,27 +76,4 @@ tensor([[[0.6188]]])
 torch.Size([1, 1, 1])
 tensor([[[21.2302]]])
 # predict: 13674.61 ms
-# processor: 1.19 ms
-# pred_masks
-torch.Size([1, 1, 1, 288, 288])
-tensor([[[[[-11.5506, -12.3197, -10.8077,  ..., -12.6199, -10.5808,
-            -10.7619],
-           [-11.4272, -13.2322,  -9.0649,  ..., -12.3486, -10.8493,
-            -10.6088],
-           [-12.8223, -14.7240, -13.2716,  ..., -14.0750, -12.4630,
-            -13.8230],
-           ...,
-           [ -9.3937, -12.8007,  -7.4311,  ...,  -9.7639,  -4.5062,
-             -7.5954],
-           [ -9.9538, -12.4816, -11.9415,  ...,  -6.2646,  -7.9975,
-             -7.0861],
-           [ -8.8765,  -9.6052,  -7.8561,  ...,  -6.4433,  -5.2130,
-             -6.3563]]]]])
-# iou_scores
-torch.Size([1, 1, 1])
-tensor([[[0.9562]]])
-# object_score_logits
-torch.Size([1, 1, 1])
-tensor([[[27.6314]]])
-# predict: 47.18 ms
 ```
