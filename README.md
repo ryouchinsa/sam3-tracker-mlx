@@ -1,7 +1,7 @@
 ## SAM3-Tracker-MLX
 This code is to run the [SAM3 Tracker](https://huggingface.co/facebook/sam3) model faster on macOS devices using MLX.
 
-We improved the [MLX-VLM](https://github.com/Blaizzy/mlx-vlm) SAM3 Tracker code so that point, box, and mask input prompts work correctly. If we use the same image resizing and nomalization functions as [PyTorch Transformers](https://github.com/huggingface/transformers), the result mask, iou_score, and object_score_logits are exactly the same between our MLX implementation and the Pytorch Transformers implementation. 
+We improved the [MLX-VLM](https://github.com/Blaizzy/mlx-vlm) SAM3 Tracker code so that point, box, and mask input prompts work correctly. If we use the same image resizing and nomalization functions as [PyTorch Transformers](https://github.com/huggingface/transformers), the result mask, iou_score, and object_score_logits are exactly the same between our MLX implementation and the Pytorch Transformers. 
 
 Install and run the SAM3 Tracker model using MLX.
 
@@ -16,7 +16,7 @@ pip install opencv-python mlx pillow requests huggingface_hub safetensors
 python test_mlx_tracker.py
 ```
 
-Using the same image resizing and nomalization functions, compare the result mask, iou_score, and object_score_logits between our MLX implementation and the Transformers implementation.
+Using the same image resizing and nomalization functions, compare the result mask, iou_score, and object_score_logits between our MLX implementation and the PyTorch Transformers.
 
 ```bash
 pip install torch==2.10.0 torchvision
@@ -50,7 +50,7 @@ array([[[21.1843]]], dtype=float32)
 
 ```
 
-### Transformers result on our Apple M1 device.
+### PyTorch Transformers result on our Apple M1 device.
 
 ```bash
 # load_model: 2586.00 ms
