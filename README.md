@@ -26,7 +26,7 @@ python test_mlx_tracker.py --preprocess_like_torch
 python test_transformers_tracker.py
 ```
 
-MLX result on our Apple M1 device.
+### MLX result on our Apple M1 device.
 
 ```bash
 # load_model: 853.90 ms
@@ -50,7 +50,7 @@ array([[[21.1843]]], dtype=float32)
 
 ```
 
-Transformers result on our Apple M1 device.
+### Transformers result on our Apple M1 device.
 
 ```bash
 # load_model: 2586.00 ms
